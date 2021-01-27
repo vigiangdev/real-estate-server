@@ -1,7 +1,6 @@
 const User = require("../models/User");
 
 const catchAsync = require("../utils/catchAsync");
-const e = require("express");
 
 exports.getFavorites = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user._id);

@@ -15,6 +15,7 @@ const globalErrorHandler = require("./controllers/errorController");
 
 const userRouter = require("./routes/userRouter");
 const favoriteRouter = require("./routes/favoriteRouter");
+const realtorRouter = require("./routes/realtorRouter");
 
 const app = express();
 require("dotenv").config();
@@ -39,7 +40,6 @@ app.use(hpp());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(`${__dirname}/public`));
 
 app.use(passport.initialize());
 require("./config/passport")(passport);
@@ -48,6 +48,7 @@ app.use(compression());
 // routers
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/favorite", favoriteRouter);
+app.use("/api/v1/realtor", realtorRouter);
 
 if (process.env.NODE_ENV === "production") {
   // Use static folder
